@@ -77,7 +77,7 @@ export default function DisplayGrid(props:any) {
                    <ListItemButton>
                      <ListItemText primary={value.gender} primaryTypographyProps={{ style: text }}/>
                      <IcnButton view={deletebtn} color='error'/>
-                     <IcnButton view={editbtn} color='success'/>
+                     <IcnButton view={editbtn} color='success' src={`/employee/edit/${value.id}`}/>
                    </ListItemButton>
                 </ListItem> 
               </List>              

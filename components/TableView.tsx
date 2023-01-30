@@ -49,7 +49,7 @@ export default function DisplayTable(props:any) {
               <TableCell>{row.gender}</TableCell>
               <TableCell>
               <Card spacing="0" direction="row" justifyContent="flex-start" alignItems="center">
-                <ActionButton title={'Edit'} colorface={"grey"}/>
+                <ActionButton title={'Edit'} colorface={"grey"} src={`/employee/edit/${row.id}`}/>
                 <IcnButton view={deletebtn} color='error'/>
               </Card>
               </TableCell>

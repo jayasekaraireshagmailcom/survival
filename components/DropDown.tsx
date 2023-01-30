@@ -5,7 +5,7 @@ import FormControl from '@mui/material/FormControl';
 import FormHelperText from '@mui/material/FormHelperText';
 
 export default function BasicSelect(props:any) {
-  const {labelId,id,value,label,dataSource,validation} = props
+  const {labelId,id,value,label,dataSource,validation,fieldColor} = props
   const [gender,setGender] = useState(value)
   const [genderError,setGenderError] = useState(false)
   const [genderErrorMsg,setGenderErrorMsg] = useState('')
@@ -15,12 +15,15 @@ export default function BasicSelect(props:any) {
       if(!validation.includes(event.target.value)){
         setGenderError(true)
         setGenderErrorMsg('Invalied Gender Option !')
+      }else{
+        setGenderError(false)
+        setGenderErrorMsg('')
       }
   };
   
   return (
-  <FormControl fullWidth error={genderError}>
-    <Select 
+  <FormControl fullWidth variant={fieldColor} error={genderError}>
+    <Select     
     labelId={labelId} 
     id={id} 
     value={gender} 

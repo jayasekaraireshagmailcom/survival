@@ -4,9 +4,10 @@ import ViewComfyIcon from '@mui/icons-material/ViewComfy';
 import ViewListIcon from '@mui/icons-material/ViewList';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
+import Link from '@mui/material/Link';
 export default function IcnButton(props:any) {
      
-  const {view,changeDisplay,color} = props
+  const {view,changeDisplay,color,src} = props
   const [statues,setStatues] = useState(<ViewListIcon/>);
   useEffect(()=>{
     switch(view.viewType){
@@ -26,9 +27,11 @@ export default function IcnButton(props:any) {
         setStatues(<EditIcon/>)
     }  
   },[view])
-  return (     
+  return (
+    <Link href={src} underline="none" >     
       <IconButton color={color} aria-label="displayView" component="label" onClick={changeDisplay}>
           {statues}
       </IconButton>
+    </Link>
   );
 }

@@ -1,12 +1,15 @@
 import React,{useState} from 'react';
 import Label from './Label'
-import Input from './Input'
+import {BasicTextFields as Input} from './Input'
 import BasicSelect from './DropDown'
 import ActionButton from './ActionButton';
 import {Grid} from '@mui/material';
 import Box from '@mui/material/Box';
+import {checkUndefined,checkOnlyLetters,checkTextLength,checkEmail,checkPhoneSL} from '../utils/validations'
+
 
 export default function Form(props:any) {
+  const{btnTittle}=props
   const [firstName,setFirstName] = useState('')
   const [firstNameError,setFirstNameError] = useState(false)
   const [firstNameErrorMsg,setFirstNameErrorMsg] = useState('')
@@ -23,18 +26,37 @@ export default function Form(props:any) {
 
 
   const validateRecord = ()=>{
-    const letters = /^[A-Za-z]+$/;
-    const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
-    const phoneRegex = /^(?:0|94|\+94)?(?:(11|21|23|24|25|26|27|31|32|33|34|35|36|37|38|41|45|47|51|52|54|55|57|63|65|66|67|81|912)(0|2|3|4|5|7|9)|7(0|1|2|4|5|6|7|8)\d)\d{6}$/;  
-    if(typeof firstName !== undefined){setFirstNameError(true);setFirstNameErrorMsg('Invalidate First Name Input !')}
-    if(firstName.match(letters)){setFirstNameError(true)}
-    if(firstName.length>6 && firstName.length<10){setFirstNameError(true)}
-    if(typeof lastName !== undefined){setLastNameError(true);setLastNameErrorMsg('Invalidate Last Name Input !')}
-    if(lastName.match(letters)){setLastNameError(true);setLastNameErrorMsg('Invalidate Last Name Input !')}
-    if(lastName.length>6 && lastName.length<10){setLastNameError(true);setLastNameErrorMsg('Invalidate Last Name Input !')}
-    if(email.match(emailRegex)){setEmailError(true);setEmailErrorMsg('Invalidate Email Input !')}
-    if(phone.match(phoneRegex)){setPhoneError(true);setPhoneErrorMsg('Invalidate Phone Input !')}
-    console.log(gender)
+    if(checkUndefined(firstName)||checkOnlyLetters(firstName)||checkTextLength(firstName)){
+      setFirstNameError(true);
+      setFirstNameErrorMsg('Invalidate First Name Input !')
+    }else{
+      setFirstNameError(false)
+      setFirstNameErrorMsg('')
+    }
+
+    if(checkUndefined(lastName)||checkOnlyLetters(lastName)||checkTextLength(lastName)){
+      setLastNameError(true);
+      setLastNameErrorMsg('Invalidate Last Name Input !')
+    }else{
+      setLastNameError(false)
+      setLastNameErrorMsg('')
+    }
+
+    if(checkEmail(email)){
+      setEmailError(true);
+      setEmailErrorMsg('Invalidate Email Input !')
+    }else{
+      setEmailError(false);
+      setEmailErrorMsg('')     
+    }
+
+    if(checkPhoneSL(phone)){
+      setPhoneError(true);
+      setPhoneErrorMsg('Invalidate Phone Input !')
+    }else{
+      setPhoneError(false);
+      setPhoneErrorMsg('')
+    }
   }
 
   const recordChange = (e:any,id:string)=>{
@@ -60,58 +82,59 @@ export default function Form(props:any) {
   }
   return(    
     <Box sx={{ flexGrow: 1 }}>
-    <Grid container spacing={0} sx={{paddingTop:'1em'}}>
-      <Grid item xs={3}>
-        <Label sx={{padding:'2em'}}>First Name</Label>
+    <Grid container spacing={0} sx={{paddingTop:'2em'}}>
+      <Grid item xs={1}></Grid>
+      <Grid item xs={2} alignItems="center"  sx={{position:'relative',top:'1em'}}>
+        <Label>First Name</Label>
       </Grid>
-      <Grid item xs={3}>
-        <Input variant='filled' valueChange={(e:any)=>recordChange(e,'firstName')} errorField={firstNameError} helperMsg={firstNameErrorMsg}/>
+      <Grid item xs={8}>
+        <Input fieldColor='filled' valueChange={(e:any)=>recordChange(e,'firstName')} errorField={firstNameError} helperMsg={firstNameErrorMsg}/>
       </Grid>
-      <Grid item xs={6}></Grid>      
+      <Grid item xs={1}></Grid>      
     </Grid>
     <Grid container spacing={0} sx={{paddingTop:'1em'}}>
-      <Grid item xs={3}>
+      <Grid item xs={1}></Grid>
+      <Grid item xs={2} sx={{position:'relative',top:'1em'}}>
         <Label sx={{padding:'2em'}}>Last Name</Label>
       </Grid>
-      <Grid item xs={3}>
-        <Input variant='filled' valueChange={(e:any)=>recordChange(e,'lastName')} errorField={lastNameError} helperMsg={lastNameErrorMsg}/>
+      <Grid item xs={8}>
+        <Input fieldColor='filled' valueChange={(e:any)=>recordChange(e,'lastName')} errorField={lastNameError} helperMsg={lastNameErrorMsg}/>
       </Grid>
-      <Grid item xs={6}>
-      </Grid>
+      <Grid item xs={1}></Grid>
     </Grid>
     <Grid container spacing={0} sx={{paddingTop:'1em'}}>
-      <Grid item xs={3}>
+      <Grid item xs={1}></Grid>
+      <Grid item xs={2} sx={{position:'relative',top:'1em'}}>
         <Label sx={{padding:'2em'}}>Email</Label>
       </Grid>
-      <Grid item xs={3}>
-        <Input variant={'filled'} valueChange={(e:any)=>recordChange(e,'email')} errorField={emailError} helperMsg={emailErrorMsg}/>
+      <Grid item xs={8}>
+        <Input fieldColor='filled' valueChange={(e:any)=>recordChange(e,'email')} errorField={emailError} helperMsg={emailErrorMsg}/>
       </Grid>
-      <Grid item xs={6}>
-      </Grid>
+      <Grid item xs={1}></Grid>
     </Grid>
     <Grid container spacing={0} sx={{paddingTop:'1em'}}>
-      <Grid item xs={3}>
+      <Grid item xs={1}></Grid>
+      <Grid item xs={2} sx={{position:'relative',top:'1em'}}>
         <Label sx={{padding:'2em'}}>Phone</Label>
       </Grid>
-      <Grid item xs={3}>
-        <Input variant={'filled'} valueChange={(e:any)=>recordChange(e,'phone')} errorField={phoneError} helperMsg={phoneErrorMsg}/>
+      <Grid item xs={8}>
+        <Input fieldColor='filled' valueChange={(e:any)=>recordChange(e,'phone')} errorField={phoneError} helperMsg={phoneErrorMsg}/>
       </Grid>
-      <Grid item xs={6}>
-      </Grid>
+      <Grid item xs={1}></Grid>
     </Grid>
     <Grid container spacing={0} sx={{paddingTop:'1em'}}>
-      <Grid item xs={3}>
+      <Grid item xs={1}></Grid>
+      <Grid item xs={2} sx={{position:'relative',top:'1em'}}>
         <Label sx={{padding:'2em'}}>Gender</Label>
       </Grid>
-      <Grid item xs={3}>
-        <BasicSelect dataSource={[{id:1,value:'male',label:'M'},{id:2,value:'female',label:'F'},{id:3,value:'bysex',label:'NA'}]} value={gender} validation={['male','female']}/>
+      <Grid item xs={8}>
+        <BasicSelect fieldColor='filled' dataSource={[{id:1,value:'male',label:'M'},{id:2,value:'female',label:'F'},{id:3,value:'bysex',label:'NA'}]} value={gender} validation={['male','female']}/>
       </Grid>
-      <Grid item xs={6}>
-      </Grid>
+      <Grid item xs={1}></Grid>
     </Grid>
-    <Grid container spacing={0} sx={{paddingTop:'1em'}}>
-      <Grid item xs={6}><ActionButton  vlidateData={validateRecord}variant="outlined" title="Add" customStyles={{marginTop:'2em',borderRadius:'5px',fontWeight:'600', width:'20%',background:'#fff',color:'purple',float:'right',border:1}} colorface={"blue"}/></Grid>
-      <Grid item xs={6}></Grid>
+    <Grid container spacing={0} sx={{padding:'2em 0 2em 2em'}}>
+      <Grid item xs={11}><ActionButton  vlidateData={validateRecord}  title={btnTittle} customStyles={{marginTop:'2em',borderRadius:'5px',fontWeight:'600', width:'20%',background:'#fff',color:'purple',float:'right',border:1}} colorface={"blue"}/></Grid>
+      <Grid item xs={1}></Grid>
     </Grid>
   </Box>
   )
