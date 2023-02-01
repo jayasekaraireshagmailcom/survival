@@ -7,6 +7,7 @@ import ActionButton from '../components/ActionButton'
 import IcnButton from '../components/IconButton'
 import { ViewState } from '../types';
 import Card from '../components/Card'
+import AlertDialog from '../components/DialogBox'
 
 export default function DisplayTable(props:any) {
   const {dataSource} = props
@@ -36,7 +37,7 @@ export default function DisplayTable(props:any) {
               <Image
                loader={imageLoader}
                unoptimized
-               src={row.photo}
+               src={row?.photo}
                alt={row.first_name+ ' ' +row.last_name}
                width="50"
                height="50"
@@ -49,8 +50,8 @@ export default function DisplayTable(props:any) {
               <TableCell>{row.gender}</TableCell>
               <TableCell>
               <Card spacing="0" direction="row" justifyContent="flex-start" alignItems="center">
-                <ActionButton title={'Edit'} colorface={"grey"} src={`/employee/edit/${row.id}`}/>
-                <IcnButton view={deletebtn} color='error'/>
+                <ActionButton title={'Edit'} colorface={"grey"} src={`/employee/edit/${row.id}`} btnvarient={'contained'}/>
+                <AlertDialog view={deletebtn} color='error' content={'Are you sure you want to DELETE?'} canselTitle='Cansel'okTitle='Ok' />                
               </Card>
               </TableCell>
             </TableRow>
