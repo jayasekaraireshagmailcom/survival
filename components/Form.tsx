@@ -7,6 +7,7 @@ import {Grid} from '@mui/material';
 import Box from '@mui/material/Box';
 import {checkUndefined,checkOnlyLetters,checkTextLength,checkEmail,checkPhoneSL,checkValueExsistInTheArray} from '../utils/validations'
 import { useRouter } from 'next/router'
+import {fetchData} from '../hooks/employee.hooks'
 
 export default function Form(props:any) {
   const {query} = useRouter()
@@ -29,7 +30,7 @@ export default function Form(props:any) {
 
   useMemo(()=>{
     if(id){
-
+console.log(fetchData)
 
       // const filteredData = val.filter((raw:any)=>raw.id==id)
       // const { first_name,last_name,email,phone,gender} = filteredData[0]
