@@ -1,4 +1,5 @@
 export const fetchData = async () => {
   const response = await fetch('/api')
-  return await response.json()
+  await response.json()
+  return '1'
 };

@@ -4,21 +4,23 @@ import ActionButton from '../../../components/ActionButton'
 import Form from '../../../components/Form'
 import { Paper } from "@mui/material";
 import React,{useState,useEffect,useMemo} from 'react'
-
+import { useRouter } from 'next/router'
 
 function EditPage() {
-  const [data,setData] = useState('');
+  const [data,setData] = useState(undefined);
+  const {query} = useRouter()
+  const { id } = query
 
+  const loadData = async ()=>{
+    const response = await fetch('/api')
+    const val = await response.json()
+    const filteredData = await val.filter((raw:any)=>raw.id==id)    
+    setData(filteredData)
+  }
 
-  // const loadData = async ()=>{
-  //   const response = await fetch('/api')
-  //   const val = await response.json()
-  //   setData(val)
-  // }
-
-  // useEffect(() => {
-  //   loadData();
-  // }, []);
+  useEffect(() => {
+    loadData();
+  }, [id]);
 
   return (
     <Layout>

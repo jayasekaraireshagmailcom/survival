@@ -4,6 +4,7 @@ import Image from "next/image";
 import imageLoader from "../imageLoader";
 import IcnButton from './IconButton';
 import usePagination from "../components/Pagination";
+import AlertDialog from './DialogBox';
 import { ViewState } from '../types';
 
 export default function DisplayGrid(props:any) {
@@ -76,7 +77,7 @@ export default function DisplayGrid(props:any) {
                 <ListItem disablePadding>
                    <ListItemButton>
                      <ListItemText primary={value.gender} primaryTypographyProps={{ style: text }}/>
-                     <IcnButton view={deletebtn} color='error'/>
+                     <AlertDialog view={deletebtn} color='error' content={'Are you sure you want to DELETE?'} canselTitle='Cansel' okTitle='Ok' actionapi={`/employee/delete/${value.id}`}/>
                      <IcnButton view={editbtn} color='success' src={`/employee/edit/${value.id}`}/>
                    </ListItemButton>
                 </ListItem> 

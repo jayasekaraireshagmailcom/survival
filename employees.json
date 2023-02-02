@@ -27,7 +27,7 @@
     "photo": "https://randomuser.me/api/portraits/men/85.jpg"
   },
   {
-    "first_name": "Skye",
+    "first_name": "Skyepetso",
     "last_name": "Rolfson",
     "email": "Angelita_Simonis@hotmail.com",
     "number": "+94771277689",
@@ -81,7 +81,7 @@
     "photo": "https://randomuser.me/api/portraits/men/66.jpg"
   },
   {
-    "first_name": "Lulu",
+    "first_name": "Lulusantha",
     "last_name": "Reinger",
     "email": "Melany_Rau70@gmail.com",
     "number": "+94771277687",
@@ -141,6 +141,24 @@
     "number": "0717366834",
     "gender": "F",
     "id": 1675240398427,
+    "photo": "https://i.pravatar.cc/200"
+  },
+  {
+    "first_name": "Lindsay",
+    "last_name": "Herman",
+    "email": "Ewald.Kunde@gmail.com",
+    "number": "+94771274218",
+    "gender": "F",
+    "id": 1675328467801,
+    "photo": "https://i.pravatar.cc/200"
+  },
+  {
+    "first_name": "Iresha",
+    "last_name": "Jayasekara",
+    "email": "",
+    "number": "",
+    "gender": "M",
+    "id": 1675340021447,
     "photo": "https://i.pravatar.cc/200"
   }
 ]

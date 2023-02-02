@@ -8,7 +8,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import IcnButton from './IconButton'
 
 export default function AlertDialog(props:any) {
-  const {view,color,content,mainTitle,canselTitle,okTitle} = props
+  const {view,color,content,mainTitle,canselTitle,okTitle,actionapi} = props
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -34,7 +34,7 @@ export default function AlertDialog(props:any) {
         </DialogContent>
         <DialogActions>
           <ActionButton vlidateData={handleClose} title={canselTitle} />
-          <ActionButton vlidateData={handleClose} autoFocus title={okTitle} />
+          <ActionButton vlidateData={handleClose} autoFocus title={okTitle} src={actionapi}/>
         </DialogActions>
       </Dialog>
     </div>

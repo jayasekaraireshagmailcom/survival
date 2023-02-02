@@ -51,7 +51,7 @@ export default function DisplayTable(props:any) {
               <TableCell>
               <Card spacing="0" direction="row" justifyContent="flex-start" alignItems="center">
                 <ActionButton title={'Edit'} colorface={"grey"} src={`/employee/edit/${row.id}`} btnvarient={'contained'}/>
-                <AlertDialog view={deletebtn} color='error' content={'Are you sure you want to DELETE?'} canselTitle='Cansel'okTitle='Ok' />                
+                <AlertDialog view={deletebtn} color='error' content={'Are you sure you want to DELETE?'} canselTitle='Cansel' okTitle='Ok' actionapi={`/employee/delete/${row.id}`}/>                
               </Card>
               </TableCell>
             </TableRow>
