@@ -10,7 +10,7 @@ import { styled } from '@mui/material/styles';
 import Link from '@mui/material/Link';
 
 export default function ActionButton(props:any) {
-  const {title,customStyles,colorface,src,vlidateData,btnvarient,autoFocus} = props
+  const {id,title,customStyles,colorface,src,vlidateData,btnvarient,autoFocus,size,disabled} = props
 
   const [btnColor,setBtnColor] = React.useState(colorface)
   const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
@@ -24,6 +24,6 @@ export default function ActionButton(props:any) {
   }));
 
   return (
-      <ColorButton autoFocus onClick={vlidateData} variant={btnvarient} sx={customStyles}><Link href={src} underline="none" >{title}</Link></ColorButton>
+      <ColorButton id={id} disabled={disabled} size={size} autoFocus onClick={vlidateData} variant={btnvarient} sx={customStyles}><Link href={src} underline="none" >{title}</Link></ColorButton>
   );
 }

@@ -5,5 +5,6 @@ module.exports = {
     domains: ["rickandmortyapi.com"],
     loader: "custom",
     path: "/",
+    cache:false,
   },
 };

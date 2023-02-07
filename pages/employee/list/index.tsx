@@ -22,7 +22,7 @@ const Page: NextPageWithLayout<{ employees: Employee[] }>  = ({employees}) => {
   return (
     <Layout>
      <Card spacing="4" direction="row" justifyContent="flex-end" alignItems="center" customStyles={{marginTop:'2em',marginRight:'2em'}}>
-       <ActionButton btnvarient={'contained'} src='/employee/add' title="add employee" customStyles={{borderRadius:'5em',fontWeight:'600'}} colorface={"blue"}/>
+       <ActionButton id='actBtn' btnvarient={'contained'} src='/employee/add' title="add employee" customStyles={{borderRadius:'5em',fontWeight:'600'}} colorface={"blue"}/>
        <IcnButton view={view} changeDisplay={change} color='primary'/>
      </Card>
      <Card spacing="1" direction="row" justifyContent="flex-end" alignItems="center" customStyles={{marginTop:'3em'}}>

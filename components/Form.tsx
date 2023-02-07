@@ -13,7 +13,7 @@ export default function Form(props:any) {
   const {query} = useRouter()
   const { id } = query
   const{btnTittle,data}=props
-  
+  const [datasource,useDatasource] = useState(data);
 
   const [firstNameError,setFirstNameError] = useState(false)
   const [firstNameErrorMsg,setFirstNameErrorMsg] = useState('')
@@ -37,7 +37,7 @@ export default function Form(props:any) {
   const lastNameRef = useRef('')
   const emailRef = useRef('')
   const phoneRef = useRef('')
-  
+
   const validateRecord = ()=>{
 
     let flag = true;
@@ -200,7 +200,7 @@ export default function Form(props:any) {
       <Grid item xs={1}></Grid>
     </Grid>
     <Grid container spacing={0} sx={{padding:'2em 0 2em 2em'}}>
-      <Grid item xs={11}><ActionButton  btnvarient={'contained'} vlidateData={validateRecord}  title={btnTittle} customStyles={{marginTop:'2em',borderRadius:'5px',fontWeight:'600', width:'20%',background:'#fff',color:'purple',float:'right',border:1}} colorface={"blue"}/></Grid>
+      <Grid item xs={11}><ActionButton  id='actBtn' btnvarient={'contained'} vlidateData={validateRecord}  title={btnTittle} customStyles={{marginTop:'2em',borderRadius:'5px',fontWeight:'600', width:'20%',background:'#fff',color:'purple',float:'right',border:1}} colorface={"blue"}/></Grid>
       <Grid item xs={1}></Grid>
     </Grid>
   </Box>

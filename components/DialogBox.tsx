@@ -33,7 +33,7 @@ export default function AlertDialog(props:any) {
           <DialogContentText id="alert-dialog-description">{content}</DialogContentText>
         </DialogContent>
         <DialogActions>
-          <ActionButton vlidateData={handleClose} title={canselTitle} />
+          <ActionButton id='actBtn' vlidateData={handleClose} title={canselTitle} />
           <ActionButton vlidateData={handleClose} autoFocus title={okTitle} src={actionapi}/>
         </DialogActions>
       </Dialog>

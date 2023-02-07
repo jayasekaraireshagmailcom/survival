@@ -4,6 +4,7 @@ import ViewComfyIcon from '@mui/icons-material/ViewComfy';
 import ViewListIcon from '@mui/icons-material/ViewList';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
+import ClearIcon from '@mui/icons-material/Clear';
 import Link from '@mui/material/Link';
 export default function IcnButton(props:any) {
      
@@ -22,6 +23,9 @@ export default function IcnButton(props:any) {
           break;
       case 'edit':
         setStatues(<EditIcon/>);
+          break;
+      case 'clear':
+        setStatues(<ClearIcon/>);
           break;
       default:
         setStatues(<EditIcon/>)
