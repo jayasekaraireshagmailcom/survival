@@ -8,11 +8,18 @@ import IcnButton from '../components/IconButton'
 import { ViewState } from '../types';
 import Card from '../components/Card'
 import AlertDialog from '../components/DialogBox'
+import { sortData } from '../utils/validations';
 
 export default function DisplayTable(props:any) {
   const {dataSource} = props
   const [deletebtn, setDeleteBtn] = useState<ViewState>({viewType: 'delete',});
   const [clearbtn, setClearBtn] = useState<ViewState>({viewType: 'clear',});
+
+  const [sortbtn1, setSortBtn1] = useState<ViewState>({viewType: 'sort-asc',});
+  const [sortbtn2, setSortBtn2] = useState<ViewState>({viewType: 'sort-asc',});
+  const [sortbtn3, setSortBtn3] = useState<ViewState>({viewType: 'sort-asc',});
+  const [sortbtn4, setSortBtn4] = useState<ViewState>({viewType: 'sort-asc',});
+  const [sortbtn5, setSortBtn5] = useState<ViewState>({viewType: 'sort-asc',});
 
   const fname = useRef('')
   const lname = useRef('')
@@ -72,7 +79,10 @@ export default function DisplayTable(props:any) {
                   gender: gender.current.value,
                 }
                 setSearch(clearFilters)
-          }} textRef={fname} fullWidth={true} fieldColor='filled' inputProps={<IcnButton view={clearbtn} changeDisplay={()=>{
+          }} textRef={fname} fullWidth={true} fieldColor='filled' startInputProps={<IcnButton color='primary'view={sortbtn1} changeDisplay={()=>{
+            sortbtn1.viewType == 'sort-asc'?setSortBtn1({viewType:'sort-desc'}):setSortBtn1({viewType:'sort-asc'})
+            setOriginalData([...sortData(originalData,{first_name:""},sortbtn1.viewType)])
+          }} />} inputProps={<IcnButton view={clearbtn} changeDisplay={()=>{
             const clearFilters = {
               first_name: '',
               last_name: lname.current.value,
@@ -82,7 +92,8 @@ export default function DisplayTable(props:any) {
             }
             setSearch(clearFilters)
             handleSearch(clearFilters,'reset')
-          }} color='error'/>}/></TableCell>
+          }} color='error'/>
+          } /></TableCell>
           <TableCell component="th" scope="row"><Input textChange={(e)=>{
                 const clearFilters = {
                   first_name: fname.current.value,
@@ -92,7 +103,10 @@ export default function DisplayTable(props:any) {
                   gender: gender.current.value,
                 }
                 setSearch(clearFilters)           
-          }} textInput={search.last_name} textRef={lname} fullWidth={true} fieldColor='filled' inputProps={<IcnButton view={clearbtn} changeDisplay={()=>{
+          }} textInput={search.last_name} textRef={lname} fullWidth={true} fieldColor='filled' startInputProps={<IcnButton color='primary'view={sortbtn2} changeDisplay={()=>{
+            sortbtn2.viewType == 'sort-asc'?setSortBtn2({viewType:'sort-desc'}):setSortBtn2({viewType:'sort-asc'})
+            setOriginalData([...sortData(originalData,{last_name:""},sortbtn2.viewType)])
+          }}/>} inputProps={<IcnButton view={clearbtn} changeDisplay={()=>{
             const clearFilters = {
               first_name: fname.current.value,
               last_name: '',
@@ -103,7 +117,10 @@ export default function DisplayTable(props:any) {
             setSearch(clearFilters) 
             handleSearch(clearFilters,'reset')
           }} color='error'/>}/></TableCell>
-          <TableCell component="th" scope="row"><Input textChange={(e)=>{
+          <TableCell component="th" scope="row"><Input startInputProps={<IcnButton color='primary'view={sortbtn3} changeDisplay={()=>{
+            sortbtn3.viewType == 'sort-asc'?setSortBtn3({viewType:'sort-desc'}):setSortBtn3({viewType:'sort-asc'})
+            setOriginalData([...sortData(originalData,{email:""},sortbtn3.viewType)])
+          }} />} textChange={(e)=>{
               const clearFilters = {
                 first_name: fname.current.value,
                 last_name: lname.current.value,
@@ -123,7 +140,10 @@ export default function DisplayTable(props:any) {
           setSearch(clearFilters)
           handleSearch(clearFilters,'reset')
           }} color='error'/>}/></TableCell>
-          <TableCell component="th" scope="row"><Input textChange={(e)=>{
+          <TableCell component="th" scope="row"><Input startInputProps={<IcnButton color='primary'view={sortbtn4} changeDisplay={()=>{
+            sortbtn4.viewType == 'sort-asc'?setSortBtn4({viewType:'sort-desc'}):setSortBtn4({viewType:'sort-asc'})
+            setOriginalData([...sortData(originalData,{number:""},sortbtn4.viewType)])
+          }} />} textChange={(e)=>{
               const clearFilters = {
                 first_name: fname.current.value,
                 last_name: lname.current.value,
@@ -143,7 +163,10 @@ export default function DisplayTable(props:any) {
             setSearch(clearFilters)
             handleSearch(clearFilters,'reset')
           }} color='error'/>}/></TableCell>
-          <TableCell component="th" scope="row"><Input textChange={(e)=>{
+          <TableCell component="th" scope="row"><Input startInputProps={<IcnButton color='primary'view={sortbtn5} changeDisplay={()=>{
+            sortbtn5.viewType == 'sort-asc'?setSortBtn5({viewType:'sort-desc'}):setSortBtn5({viewType:'sort-asc'})
+            setOriginalData([...sortData(originalData,{gender:""},sortbtn5.viewType)])
+          }} />} textChange={(e)=>{
               const clearFilters = {
                 first_name: fname.current.value,
                 last_name: lname.current.value,

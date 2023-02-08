@@ -22,4 +22,16 @@ const checkValueExsistInTheArray = (arrayOfData:any,value:any)=>{
 const checkNullable = (value:any)=>{
   return value?.length>0
 }
-export {checkUndefined,checkOnlyLetters,checkTextLength,checkEmail,checkPhoneSL,checkValueExsistInTheArray,checkNullable}
+const sortData = (data:any,field:any,order:string)=>{
+  if(order=='sort-asc'){
+    return data.sort(function (a, b) {
+      return a[Object.keys(field)[0]].localeCompare(b[Object.keys(field)[0]]);
+    });    
+  }else{
+    return data.reverse(function (a, b) {
+      return a[Object.keys(field)[0]].localeCompare(b[Object.keys(field)[0]]);
+    });
+  }
+
+}
+export {checkUndefined,checkOnlyLetters,checkTextLength,checkEmail,checkPhoneSL,checkValueExsistInTheArray,checkNullable,sortData}
